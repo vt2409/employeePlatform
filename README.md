@@ -23,14 +23,16 @@ Both applications run locally for development and can be deployed independently.
 ```bash
 cd backend
 
-# Create virtual environment
-python -m venv .venv
+# Create virtual environment (this project uses `venv`)
+python -m venv venv
 
 # Activate virtual environment
-# On Windows:
-.venv\Scripts\activate
+# PowerShell (recommended on Windows):
+venv\Scripts\Activate.ps1
+# CMD on Windows:
+venv\Scripts\activate
 # On macOS/Linux:
-source .venv/bin/activate
+source venv/bin/activate
 
 # Install dependencies
 pip install -r requirements.txt
@@ -38,7 +40,8 @@ pip install -r requirements.txt
 # Run migrations
 python manage.py migrate
 
-# Seed 10,000 employees
+# (Optional) Seed employees
+# Default: 10,000 employees
 python manage.py seed_employees
 
 # Start the development server (runs on http://localhost:8000)
@@ -57,6 +60,20 @@ npm install
 
 # Start the development server (runs on http://localhost:5173)
 npm run dev
+
+## Quick Validation
+
+After starting both servers you can validate the app:
+
+- Frontend: http://localhost:5173 should load the React app
+- Backend API base: http://localhost:8000/api/ should return API root or available endpoints
+
+You can also run backend tests to verify correctness:
+
+```bash
+cd backend
+pytest
+```
 ```
 
 ### Step 3: Access the Application
